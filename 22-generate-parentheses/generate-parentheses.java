@@ -1,15 +1,19 @@
 class Solution {
-    List<String> result = new ArrayList<>();
-    public void solve(int n , String temp , int open , int close){
-        if(temp.length() == 2*n){
-            result.add(temp);
+    ArrayList<String>sol=new ArrayList<>();   
+    public List<String> generateParenthesis(int n){
+        generate(0,0,n,"");
+        return sol;
+    }
+    public void generate(int ob,int cb,int n,String ans){
+        if(ans.length()==n*2){
+            sol.add(ans);
             return;
         }
-        if(open<n) solve(n , temp+'(', open+1, close);
-        if(close<open) solve(n , temp+')',open , close+1);
+        if(ob<n){
+            generate(ob+1,cb,n,ans+"(");
+        }
+        if(cb<ob){
+            generate(ob,cb+1,n,ans+")");
+        }
+        }
     }
-    public List<String> generateParenthesis(int n) {
-        solve(n , "", 0 , 0);
-        return result;
-    }
-}
