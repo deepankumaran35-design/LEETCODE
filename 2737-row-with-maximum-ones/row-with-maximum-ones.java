@@ -15,6 +15,9 @@ class Solution {
                 rowindex=i;
                             }  
         }
-        return new int[]{rowindex,maxone};
+        int[] arr= new int[2];
+        arr[0] = rowindex; arr[1] = maxone;
+        return arr;
+    //    return new int[]{rowindex,maxone};
     }
 }
